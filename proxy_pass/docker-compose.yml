@@ -1,0 +1,8 @@
+version: "2.0"
+services:
+  think-proxy-pass:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8090:80'
