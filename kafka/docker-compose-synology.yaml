@@ -7,6 +7,7 @@ services:
       - ./timezone:/etc/timezone:ro
     ports:
       - "2181:2181"
+    restart: always
 
   kafkai1:
     image: wurstmeister/kafka
@@ -26,6 +27,7 @@ services:
     depends_on:
       - zookeeper
     container_name: kafka1
+    restart: always
 
   kafkai2:
     image: wurstmeister/kafka
@@ -45,6 +47,7 @@ services:
     depends_on:
       - kafkai1
     container_name: kafka2
+    restart: always
 
   kafkai3:
     image: wurstmeister/kafka
@@ -64,3 +67,4 @@ services:
     depends_on:
       - kafkai2
     container_name: kafka3
+    restart: always
