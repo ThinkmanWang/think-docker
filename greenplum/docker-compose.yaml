@@ -6,13 +6,16 @@ services:
     image: centos-ssh
     container_name: gpdb-mdw
     tty: true
+	restart: always
 
   sdw1:
     image: centos-ssh
     container_name: gpdb-sdw1
     tty: true
+	restart: always
 
   sdw2:
     image: centos-ssh
     container_name: gpdb-sdw2
     tty: true
+	restart: always
