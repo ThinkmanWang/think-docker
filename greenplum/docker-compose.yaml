@@ -1,0 +1,18 @@
+version: "3.2"
+
+services:
+
+  mdw:
+    image: centos-ssh
+    container_name: gpdb-mdw
+    tty: true
+
+  sdw1:
+    image: centos-ssh
+    container_name: gpdb-sdw1
+    tty: true
+
+  sdw2:
+    image: centos-ssh
+    container_name: gpdb-sdw2
+    tty: true
