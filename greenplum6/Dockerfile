@@ -7,6 +7,7 @@ RUN yum install -y \
     openssh-clients \
     less \
     iproute \
+	apr apr-util bzip2 curl krb5 libcurl libevent libxml2 libyaml zlib openldap openssh openssl openssl-libs perl readline rsync R sed tar zip java-1.8.0-openjdk \
     which; yum clean all
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
 RUN groupadd gpadmin
