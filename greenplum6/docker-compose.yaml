@@ -1,0 +1,39 @@
+version: "3.2"
+
+services:
+    gp6master:
+        image: centos-ssh
+        container_name: gp6master
+        tty: true
+        restart: always
+        ports:
+            - "5532:5432"
+        depends_on:
+            - gp6node1
+            - gp6node2
+            - gp6node3
+            - gp6node4
+
+    gp6node1:
+        image: centos-ssh
+        container_name: gp6node1
+        tty: true
+        restart: always
+
+    gp6node2:
+        image: centos-ssh
+        container_name: gp6node2
+        tty: true
+        restart: always
+
+    gp6node3:
+        image: centos-ssh
+        container_name: gp6node3
+        tty: true
+        restart: always
+
+    gp6node4:
+        image: centos-ssh
+        container_name: gp6node4
+        tty: true
+        restart: always
