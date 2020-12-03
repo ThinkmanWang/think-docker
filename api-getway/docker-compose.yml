@@ -1,0 +1,14 @@
+version: "2.0"
+services:
+  think-api-getway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    # volumes:
+    #   - .:/app
+    #   - ./dist:/etc/nginx/html
+    #   - ./config/nginx:/etc/nginx/conf.d
+    restart: always
+
