@@ -1,0 +1,18 @@
+# A simple bundle docker container for orange
+
+think-orange:
+  # build: .
+  # The prebuilt image is avaliable below
+  image: syhily/orange
+  ports:
+    - "7777:7777"
+    # - "8888:80"
+    - "8888:8888"
+    - "9999:9999"
+  environment:
+    - ORANGE_HOST=172.16.0.2
+    - ORANGE_PORT=3306
+    - ORANGE_USER=orange
+    - ORANGE_PWD=orange
+    - ORANGE_DATABASE=orange
+  restart: always
