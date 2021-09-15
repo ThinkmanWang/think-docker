@@ -38,6 +38,7 @@ services:
       - POSTGRES_PASSWORD=FoolishPassword
       - POSTGRES_USER=druid
       - POSTGRES_DB=druid
+    restart: always
 
   # Need 3.5 or later for container nodes
   zookeeper:
@@ -47,6 +48,7 @@ services:
       - "9000:2181"
     environment:
       - ZOO_MY_ID=1
+    restart: always
 
   coordinator:
     image: apache/druid:0.21.1
@@ -63,6 +65,7 @@ services:
       - coordinator
     env_file:
       - environment
+    restart: always
 
   broker:
     image: apache/druid:0.21.1
@@ -79,6 +82,7 @@ services:
       - broker
     env_file:
       - environment
+    restart: always
 
   historical:
     image: apache/druid:0.21.1
@@ -96,6 +100,7 @@ services:
       - historical
     env_file:
       - environment
+    restart: always
 
   middlemanager:
     image: apache/druid:0.21.1
@@ -114,6 +119,7 @@ services:
       - middleManager
     env_file:
       - environment
+    restart: always
 
   router:
     image: apache/druid:0.21.1
@@ -130,3 +136,4 @@ services:
       - router
     env_file:
       - environment
+    restart: always
