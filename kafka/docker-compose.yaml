@@ -21,7 +21,7 @@ services:
       #KAFKA_ADVERTISED_PORT: 9092
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_BROKER_ID: 1
-      KAFKA_CREATE_TOPICS: "think-topic:6:1,db-club-event:6:1,think-log:6:1,druid-test:6:1"
+      KAFKA_CREATE_TOPICS: "think-topic:6:1,db-club-event:6:1,think-log:6:1,druid-test:6:1,eventtrack:6:1"
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
       KAFKA_LISTENERS: PLAINTEXT://:9092
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://172.16.0.2:9092
