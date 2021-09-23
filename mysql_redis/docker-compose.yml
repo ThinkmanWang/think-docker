@@ -1,4 +1,9 @@
 version: '2'  
+
+networks:
+  think_network:
+    external: true
+
 services:  
   mysql:
     image: mysql
@@ -12,6 +17,8 @@ services:
     ports:
       - "3306:3306"
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --init-connect='SET NAMES utf8mb4;' --innodb-flush-log-at-trx-commit=0
+    networks:
+      - think_network
     restart: always
   
   redis:
@@ -23,4 +30,6 @@ services:
     ports:
       - "6379:6379"
     command: redis-server --requirepass Ab123145
+    networks:
+      - think_network
     restart: always

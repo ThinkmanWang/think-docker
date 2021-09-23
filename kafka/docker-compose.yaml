@@ -1,4 +1,9 @@
 version: '3'
+
+networks:
+  think_network:
+    external: true
+
 services:
   zookeeper:
     image: wurstmeister/zookeeper
@@ -7,6 +12,8 @@ services:
       - ./timezone:/etc/timezone:ro
     ports:
       - "2181:2181"
+    networks:
+      - think_network
     restart: always
 
   kafkai1:
@@ -28,6 +35,8 @@ services:
     depends_on:
       - zookeeper
     container_name: kafka1
+    networks:
+      - think_network
     restart: always
 
   kafkai2:
@@ -49,6 +58,8 @@ services:
     depends_on:
       - kafkai1
     container_name: kafka2
+    networks:
+      - think_network
     restart: always
 
   kafkai3:
@@ -70,4 +81,6 @@ services:
     depends_on:
       - kafkai2
     container_name: kafka3
+    networks:
+      - think_network
     restart: always
