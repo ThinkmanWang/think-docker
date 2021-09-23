@@ -18,6 +18,11 @@
 #
 version: "2.2"
 
+networks:
+  think_network:
+    external: true
+
+
 volumes:
   metadata_data: {}
   middle_var: {}
@@ -38,6 +43,8 @@ services:
       - POSTGRES_PASSWORD=FoolishPassword
       - POSTGRES_USER=druid
       - POSTGRES_DB=druid
+    networks:
+      - think_network
     restart: always
 
   # Need 3.5 or later for container nodes
@@ -48,6 +55,8 @@ services:
       - "9000:2181"
     environment:
       - ZOO_MY_ID=1
+    networks:
+      - think_network
     restart: always
 
   coordinator:
@@ -65,6 +74,8 @@ services:
       - coordinator
     env_file:
       - environment
+    networks:
+      - think_network
     restart: always
 
   broker:
@@ -82,6 +93,8 @@ services:
       - broker
     env_file:
       - environment
+    networks:
+      - think_network
     restart: always
 
   historical:
@@ -100,6 +113,8 @@ services:
       - historical
     env_file:
       - environment
+    networks:
+      - think_network
     restart: always
 
   middlemanager:
@@ -119,6 +134,8 @@ services:
       - middleManager
     env_file:
       - environment
+    networks:
+      - think_network
     restart: always
 
   router:
@@ -136,4 +153,6 @@ services:
       - router
     env_file:
       - environment
+    networks:
+      - think_network
     restart: always
