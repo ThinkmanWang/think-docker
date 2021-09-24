@@ -97,6 +97,26 @@ services:
       - think_network
     restart: always
 
+  historical:
+    image: apache/druid:0.21.1
+    container_name: druid_historical
+    volumes:
+      - druid_shared:/opt/shared
+      - historical_var:/opt/druid/var
+    depends_on: 
+      - zookeeper
+      - postgres
+      - coordinator
+    ports:
+      - "9003:8083"
+    command:
+      - historical
+    env_file:
+      - environment
+    networks:
+      - think_network
+    restart: always
+
 
   middlemanager:
     image: apache/druid:0.21.1
@@ -138,82 +158,3 @@ services:
       - think_network
     restart: always
 
-  historical1:
-    image: apache/druid:0.21.1
-    container_name: druid_historical01
-    volumes:
-      - druid_shared:/opt/shared
-      - historical_var:/opt/druid/var
-    depends_on: 
-      - zookeeper
-      - postgres
-      - coordinator
-    ports:
-      - "9012:8083"
-    command:
-      - historical
-    env_file:
-      - environment
-    networks:
-      - think_network
-    restart: always
-
-  historical2:
-    image: apache/druid:0.21.1
-    container_name: druid_historical02
-    volumes:
-      - druid_shared:/opt/shared
-      - historical_var:/opt/druid/var
-    depends_on: 
-      - zookeeper
-      - postgres
-      - coordinator
-    ports:
-      - "9013:8083"
-    command:
-      - historical
-    env_file:
-      - environment
-    networks:
-      - think_network
-    restart: always
-
-  historical3:
-    image: apache/druid:0.21.1
-    container_name: druid_historical03
-    volumes:
-      - druid_shared:/opt/shared
-      - historical_var:/opt/druid/var
-    depends_on: 
-      - zookeeper
-      - postgres
-      - coordinator
-    ports:
-      - "9014:8083"
-    command:
-      - historical
-    env_file:
-      - environment
-    networks:
-      - think_network
-    restart: always
-
-  historical4:
-    image: apache/druid:0.21.1
-    container_name: druid_historical04
-    volumes:
-      - druid_shared:/opt/shared
-      - historical_var:/opt/druid/var
-    depends_on: 
-      - zookeeper
-      - postgres
-      - coordinator
-    ports:
-      - "9015:8083"
-    command:
-      - historical
-    env_file:
-      - environment
-    networks:
-      - think_network
-    restart: always
