@@ -1,16 +1,23 @@
 version: '2'
 
+networks:
+  think_network:
+    external: true
+
 services:
-    gogs:
-        container_name: gogs
-        restart: always
-        image: gogs/gogs:latest
-        ports: 
-            - "10022:22"
-            - "3000:3000"
-        volumes:
-            - ./data:/data/gogs
-            - ./repo:/data/git/gogs-repositories
-        environment:
-            - RUN_CROND=true
+  gogs:
+    container_name: gogs
+    image: gogs/gogs:latest
+    ports: 
+      - "10022:22"
+      - "3000:3000"
+    volumes:
+      - ./data:/data/gogs
+      - ./repo:/data/git/gogs-repositories
+    environment:
+      - RUN_CROND=true
+    networks:
+      - think_network
+    restart: always
+        
 
